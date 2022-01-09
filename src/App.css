@@ -44,3 +44,8 @@
   padding: 10px;
   background-color: #abc123;
 }
+
+.col{
+  display: inline-block;
+  margin: 40px; 
+}

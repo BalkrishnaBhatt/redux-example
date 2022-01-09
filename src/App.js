@@ -19,12 +19,25 @@ function App() {
 
   const age = useSelector((state) => state.age)
   const history = useSelector((state) => state.history)
+  const a = useSelector((state) => state.rA.a)
+  const b = useSelector((state) => state.rB.b)
+
 
   const dispatch = useDispatch();
 
   return (
     <div className="App">
-      <div>Age: {age} <span></span> </div>
+
+      <div className='col'> A: <span></span> {a} <br />
+        <button onClick={()=> dispatch({type:'UPDATE_A',b:b}) }>Update A</button>
+      </div>
+  
+  
+      <div className='col'> B: <span></span> {b} <br />
+        <button onClick={()=> dispatch({type:'UPDATE_B',a:a}) }> Update B</button>
+      </div>
+
+      {/* <div>Age: {age} <span></span> </div>
       <button onClick={() => dispatch({ type: 'AGE_UP', val: 1 })} >Age Up</button>
       <button onClick={() => dispatch({ type: 'AGE_DOWN', val: 1 })}>Age Down</button>
       <br />
@@ -36,7 +49,7 @@ function App() {
             })
           }
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
