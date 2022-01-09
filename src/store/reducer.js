@@ -18,13 +18,13 @@ const reducer = (state = initialState, action) => {
     // return newState;
     
     switch(action.type){
-        case 'AGE_UP':
+        case 'AGE_UP_ASYNC':
             return {
                 ...state,
                 age: state.age + action.val,
                 history: state.history.concat({age:state.age + action.val, id:Math.random() })
             }
-        case 'AGE_DOWN':
+        case 'AGE_DOWN_ASYNC':
             return {
                 ...state,
                 age: state.age - action.val,
