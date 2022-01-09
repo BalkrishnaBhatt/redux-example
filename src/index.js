@@ -5,10 +5,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore,applyMiddleware } from 'redux';
 import reducer  from './store/reducer'; 
 
-const store = createStore(reducer);
+const logAction = store => {
+    console.log(store,"STORE")
+  return next => {
+    console.log(next,"NEXT")
+    return action => {
+      console.log('[Middleware] Dispatching', action);
+      const result = next(action);
+      console.log(JSON.stringify(result) ,'[Middleware] next state', store.getState());
+      return result;
+    }
+  }
+}
+
+const store = createStore(reducer, applyMiddleware(logAction));
 
 ReactDOM.render(
   <Provider store={store}>
